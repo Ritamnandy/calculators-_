@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calculator.css">
+    <link rel="stylesheet" type="text/css"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Calculator</title>
+</head>
+<body>
+   <section>
+    <div class="content">   
+          <input type="text" id="display" placeholder="00" disabled >
+        <div class="buttons">
+            <button onclick="mynum('10^')">10<sup>X</sup></button>
+            <button onclick="mydegree()">Deg</button>
+            <button onclick="mynum('sin(')">Sin</button>
+            <button onclick="mynum('cos(')">Cos</button>
+            <button onclick="mynum('tan(')">Tan</button>
+                    
+            <button onclick="mynum('^')">X<sup>y</sup></button>
+            <button onclick="mynum('log(')">Log</button>
+            <button onclick="mynum('ln(')">In</button>
+            <button onclick="mynum('(')">(</button>
+            <button onclick="mynum( ')')">)</button>
+                    
+            <button onclick="mynum('√(')"><i class="fa-solid fa-square-root-variable"></i></button>
+            <button class="e" onclick="myclear()">AC</button>
+            <button class="e" onclick="mydel()"><i class="fa-solid fa-delete-left"></i></i></button>
+            <button class="e" onclick="mypersent()">%</button>
+            <button class="e" onclick="mynum('/')"><i class="fa-solid fa-divide"></i></button>
+               
+            <button onclick="myfact()">X!</button>
+            <button onclick="mynum('7')">7</button>
+            <button onclick="mynum('8')">8</button>
+            <button onclick="mynum('9')">9</button>
+            <button class="e" onclick="mynum('x')"><i class="fa-solid fa-xmark"></i></button>   
+               
+            <button onclick="myxnum()">1/X</button> 
+            <button onclick="mynum('4')">4</button>
+            <button onclick="mynum('5')">5</button>
+            <button onclick="mynum('6')">6</button>
+            <button class="e" onclick="mynum('-')"><i class="fa-solid fa-minus"></i></button> 
+                
+            <button onclick="mynum('π')">&#960</button>    
+            <button onclick="mynum('1')">1</button>
+            <button onclick="mynum('2')">2</button>
+            <button onclick="mynum('3')">3</button>
+            <button class="e" onclick="mynum('+')"><i class="fa-solid fa-plus"></i></button>
+               
+            <button onclick="mynum('e')">e</button>   
+            <button onclick="mynum('0')">0</button>   
+            <button class="equal" onclick="mycal()"><i class="fa-solid fa-equals"></i></button>   
+
+        </div>
+    </div>
+   </section> 
+</body>
+
+<script>
+    let a= "Solve Your Problem.";
+     alert(a);
+    let output = document.getElementById("display");
+    function mynum( val)
+    {
+        output.value+=val;
+    }
+    function mycal()
+    {
+        let r=output.value
+                .replace(/\x/g,'*')
+                .replace(/π/g, "Math.PI")
+                .replace(/e/g, "Math.E")
+                .replace(/√\(/g, "Math.sqrt(")
+                .replace(/log\(/g, "Math.log10(")
+                .replace(/ln\(/g, "Math.log(")       
+                .replace(/sin\(/g, "Math.sin(")
+                .replace(/cos\(/g, "Math.cos(")
+                .replace(/tan\(/g, "Math.tan(")
+                .replace(/\^/g,'**');
+        output.value= eval(r);
+    }
+    function myclear()
+    {
+        output.value=" ";
+    }
+    function mydel()
+    {
+         output.value= output.value.slice(0,-1);
+    }
+    function myfact()
+    {
+        let n= output.value;
+        let i;
+        let fact=1;
+        for(i=1;i<=n;i++)
+        {
+            fact*=i;
+        }
+        output.value =fact;
+    }
+    function mypersent(){
+        let f=output.value;
+        let f2= (f/100);
+        output.value=f2;
+    }
+    function myxnum(){
+        let u=output.value;
+        let u2=Math.pow(u,(-1));
+        output.value=u2;
+    }
+    function mydegree(){
+        let d= output.value;
+        let d2= d*(Math.PI/180);
+        output.value= d2;
+    }
+</script>
+</html>
